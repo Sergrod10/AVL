@@ -269,6 +269,7 @@ public:
         if (v == 0) return 0;
         if (v == id) {
             if (!t[v].r) {
+                free.pb(v);
                 return t[v].l;
             }
             t[v].r = dodel(t[v].r, id);
@@ -284,6 +285,7 @@ public:
             t[id].val = t[v].val;
             t[v].h = 0;
             free.pb(v);
+//            cout << v << endl;
             return t[v].r;
         }
     }
@@ -312,7 +314,6 @@ public:
 
     void delmin() {
         pi p = getmin();
-        //        cout << p.ff << " " << p.ss << "\n";
         if (!p.ss) {
             return;
         }
@@ -335,6 +336,10 @@ public:
 
     int isbalance() {
         return checkbal(root);
+    }
+
+    void pri() {
+        cout << t.size();
     }
 };
 
@@ -373,65 +378,65 @@ void solve() {
     //        }
 //        }
 
-    // int n = 10000;
-    // int quers = 15;
-    // for (int i = 0; i < n; i++) {
-    //     //cout << "TESTING #" << i << endl;
-    //     BinaryTree<int> t;
-    //     set<int> s;
-    //     vpi q;
-    //     int ok = 1;
-    //     for (int j = 0; j < quers; j++) {
-    //         int x = rand() % 11;
-    //         int tt = rand() % 3;
-    //         q.pb({x, tt});
-    //         if (tt == 0) {
-    //             t.insert(x);
-    //             s.insert(x);
-    //         }
-    //         else if (tt == 1) {
-    //             t.del(x);
-    //             if (s.find(x) != s.end()) {
-    //                 s.erase(x);
-    //             }
-    //         }
-    //         else {
-    //             t.delmin();
-    //             if (s.size()) {
-    //                 s.erase(s.begin());
-    //             }
-    //         }
-
-    //         vi my = t.get();
-    //         int fl = (my.size() != s.size());
-    //         if (!fl) {
-    //             int ind = 0;
-    //             for (auto u : s) {
-    //                 if (u != my[ind]) {
-    //                     fl = 1;
-    //                     break;
-    //                 }
-    //                 ind++;
-    //             }
-    //         }
-    //         if (fl) {
-    //             for (auto u : s) {
-    //                 cout << u << " ";
-    //             }
-    //             cout << "\n\n";
-    //             t.print();
-    //             cout << "\n";
-    //             for (auto u : q) {
-    //                 cout << u.ff << " " << u.ss << "\n";
-    //             }
-    //             ok = 0;
-    //             break;
-    //         }
-    //     }
-    //     if (!ok) {
-    //         break;
-    //     }
-    // }
+//     int n = 10000;
+//     int quers = 15;
+//     for (int i = 0; i < n; i++) {
+//         //cout << "TESTING #" << i << endl;
+//         BinaryTree<int> t;
+//         set<int> s;
+//         vpi q;
+//         int ok = 1;
+//         for (int j = 0; j < quers; j++) {
+//             int x = rand() % 11;
+//             int tt = rand() % 3;
+//             q.pb({x, tt});
+//             if (tt == 0) {
+//                 t.insert(x);
+//                 s.insert(x);
+//             }
+//             else if (tt == 1) {
+//                 t.del(x);
+//                 if (s.find(x) != s.end()) {
+//                     s.erase(x);
+//                 }
+//             }
+//             else {
+//                 t.delmin();
+//                 if (s.size()) {
+//                     s.erase(s.begin());
+//                 }
+//             }
+//
+//             vi my = t.get();
+//             int fl = (my.size() != s.size());
+//             if (!fl) {
+//                 int ind = 0;
+//                 for (auto u : s) {
+//                     if (u != my[ind]) {
+//                         fl = 1;
+//                         break;
+//                     }
+//                     ind++;
+//                 }
+//             }
+//             if (fl) {
+//                 for (auto u : s) {
+//                     cout << u << " ";
+//                 }
+//                 cout << "\n\n";
+//                 t.print();
+//                 cout << "\n";
+//                 for (auto u : q) {
+//                     cout << u.ff << " " << u.ss << "\n";
+//                 }
+//                 ok = 0;
+//                 break;
+//             }
+//         }
+//         if (!ok) {
+//             break;
+//         }
+//     }
 
     //    BinaryTree<int> t;
     //    t.insert(1);
@@ -439,6 +444,20 @@ void solve() {
     //    t.delmin();
     //    t.insert(2);
     //    t.print();
+
+//    BinaryTree<int> t;
+//    t.insert(42);
+//    for (int i = 0; i < 100; i++) {
+//        t.pri();
+//        cout << endl;
+//        t.insert(40);
+//        t.pri();
+//        cout << endl;
+//        t.delmin();
+//        t.pri();
+//        cout << endl << endl;
+//    }
+//    t.pri();
 
     BinaryTree<int> t;
     cout << "1 - Вставка элемента с заданным ключом\n2 - Поиск элемента по ключу (возвращает указатель, если такого нет вернет 0)\n";
